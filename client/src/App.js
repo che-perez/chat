@@ -3,6 +3,10 @@ import './App.css'
 
 import { subscribeToTimer } from './api'
 
+import ChannelList from './components/ChannelList'
+import Chat from './components/Chat'
+import UserList from './components/UserList'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        This is the value of the timer timestamp: {this.state.timestamp}
+        <ChannelList />
       </div>
     )
   }
