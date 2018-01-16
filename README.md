@@ -7,3 +7,4 @@ A single-page chat application built using React and socket.io.
 - React
 - socket.io
 - RethinkDB
+- RxJS
