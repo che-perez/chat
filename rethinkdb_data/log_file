@@ -1,0 +1,36 @@
+2018-01-16T16:53:32.713993000 0.162801s notice: Recursively removing directory /Users/dannyeng/Coding/chat/rethinkdb_data/tmp
+2018-01-16T16:53:32.716962000 0.165776s notice: Initializing directory /Users/dannyeng/Coding/chat/rethinkdb_data
+2018-01-16T16:53:32.717121000 0.165928s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/dannyeng/Coding/chat/rethinkdb_data' did not already exist or is empty.)
+2018-01-16T16:53:32.717170000 0.165977s notice: Running rethinkdb 2.3.6 (CLANG 8.1.0 (clang-802.0.42))...
+2018-01-16T16:53:32.742684000 0.191492s notice: Running on Darwin 16.7.0 x86_64
+2018-01-16T16:53:32.742758000 0.191564s notice: Loading data from directory /Users/dannyeng/Coding/chat/rethinkdb_data
+2018-01-16T16:53:33.352728000 0.801467s info: Automatically using cache size of 100 MB
+2018-01-16T16:53:33.352744000 0.801482s warn: Cache size does not leave much memory for server and query overhead (available memory: 455 MB).
+2018-01-16T16:53:33.352753000 0.801492s warn: Cache size is very low and may impact performance.
+2018-01-16T16:53:33.353782000 0.802521s notice: Listening for intracluster connections on port 29015
+2018-01-16T16:53:33.359081000 0.807820s notice: Listening for client driver connections on port 28015
+2018-01-16T16:53:33.359261000 0.807999s notice: Listening for administrative HTTP connections on port 8080
+2018-01-16T16:53:33.359264000 0.808002s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2018-01-16T16:53:33.359270000 0.808008s notice: Listening on driver addresses: 127.0.0.1, ::1
+2018-01-16T16:53:33.359272000 0.808010s notice: Listening on http addresses: 127.0.0.1, ::1
+2018-01-16T16:53:33.359277000 0.808016s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2018-01-16T16:53:33.359283000 0.808021s notice: Server ready, "ool_ad0203f6_dyn_optonline_net_mv3" e035ee50-7b88-4f62-a579-0444d4b42d2d
+2018-01-16T16:53:52.822476000 20.270267s notice: Server got SIGINT from pid 58622, uid 501; shutting down...
+2018-01-16T16:53:52.822701000 20.270491s notice: Shutting down client connections...
+2018-01-16T16:53:52.822938000 20.270728s notice: All client connections closed.
+2018-01-16T16:53:52.822947000 20.270736s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2018-01-16T16:53:52.833283000 20.281073s notice: Storage engine shut down.
+2018-01-16T18:23:34.240519000 40.158949s notice: Running rethinkdb 2.3.6 (CLANG 8.1.0 (clang-802.0.42))...
+2018-01-16T18:23:34.267836000 40.186271s notice: Running on Darwin 16.7.0 x86_64
+2018-01-16T18:23:34.267909000 40.186332s notice: Loading data from directory /Users/dannyeng/Coding/chat/rethinkdb_data
+2018-01-16T18:23:34.388863000 40.307219s info: Automatically using cache size of 100 MB
+2018-01-16T18:23:34.388880000 40.307235s warn: Cache size does not leave much memory for server and query overhead (available memory: 496 MB).
+2018-01-16T18:23:34.388890000 40.307245s warn: Cache size is very low and may impact performance.
+2018-01-16T18:23:34.390009000 40.308364s notice: Listening for intracluster connections on port 29015
+2018-01-16T18:23:34.393397000 40.311752s notice: Listening for client driver connections on port 28015
+2018-01-16T18:23:34.393689000 40.312045s notice: Listening for administrative HTTP connections on port 8080
+2018-01-16T18:23:34.393693000 40.312048s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2018-01-16T18:23:34.393698000 40.312053s notice: Listening on driver addresses: 127.0.0.1, ::1
+2018-01-16T18:23:34.393700000 40.312055s notice: Listening on http addresses: 127.0.0.1, ::1
+2018-01-16T18:23:34.393705000 40.312059s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2018-01-16T18:23:34.393709000 40.312064s notice: Server ready, "ool_ad0203f6_dyn_optonline_net_mv3" e035ee50-7b88-4f62-a579-0444d4b42d2d
