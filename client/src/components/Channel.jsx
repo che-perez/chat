@@ -1,12 +1,6 @@
 import React from 'react'
 
 function Channel (props){
-<<<<<<< HEAD
-
-}
-
-export default Channel
-=======
     return (
         <div className="Channel">
             <ul>
@@ -19,5 +13,4 @@ export default Channel
 
 }
 
-export default Channel
->>>>>>> changes to Channel Component
+export default Channel;
