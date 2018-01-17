@@ -25,6 +25,8 @@ class App extends Component {
     return (
       <div className="App">
         <ChannelList />
+        <UserList />
+        <Chat />
       </div>
     )
   }

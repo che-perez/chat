@@ -1,28 +1,80 @@
+
+
+body {
+  overflow: hidden;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+
+  height: 100vh;
+  width: 100vw;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.channel-list, .user-list, .chat {
+  overflow-y: scroll;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.channel-list {
+  background: #FF0000;
+  position: fixed;
+
+  width: 20%;
+
+  animation: channelListSlideIn 0.1s linear forwards;
 }
 
-.App-title {
-  font-size: 1.5em;
+.channel-list:hover {
+  animation: channelListSlideOut 0.1s linear forwards;
 }
 
-.App-intro {
-  font-size: large;
+@keyframes channelListSlideIn {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-75%);
+  }
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes channelListSlideOut {
+  from {
+    transform: translateX(-75%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.user-list {
+  background: #00FF00;
+
+  margin: 0 0 0 5%;
+
+  width: 15%;
+}
+
+.chat {
+  background: #0000FF;
+
+  width: 80%;
+}
+
+.channel, .user {
+  padding: 5px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  padding: 5px;
+
+  display: flex;
+  justify-content: space-between;
 }
