@@ -2,13 +2,10 @@ import React from 'react'
 
 function Channel (props){
   return (
-      <div className="Channel">
-          <ul>
-              <li>Channel-1</li>
-              <li>Channel-2</li>
-              <li>Channel-3</li>
-          </ul>
+      <div className="channel">
+        <p>{props.name}</p>
       </div>
   )
 }
+
 export default Channel
