@@ -1,11 +1,16 @@
 import React from 'react'
 
 function Channel (props){
-  return (
-      <div className="channel">
-        <p>{props.name}</p>
-      </div>
-  )
+    console.log(props);
+    return (
+        <div className="Channel">
+            <ul>
+                {props.channels.map(channel =>
+                    <li key={channel.id}>{channel.name}</li>
+                )}
+            </ul>
+        </div>
+    )
 }
 
 export default Channel

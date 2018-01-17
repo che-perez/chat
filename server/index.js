@@ -1,15 +1,45 @@
-const io = require('socket.io')()
-const port = 8000
+const io = require('socket.io')();
+const r = require('rethinkdb');
 
-io.on('connection', (client) => {
-  client.on('subscribeToTimer', (interval) => {
-    console.log('client is subscribing to timer with interval ', interval)
-    setInterval(() => {
-      client.emit('timer', new Date())
-    }, interval)
+function createChannel({ connection, name }) {
+  return r.table('channels')
+  .insert({
+    name,
+    timestamp: new Date(),
   })
-})
+  .run(connection)
+  .then(() => console.log('New Channel: ', name));
+}
 
-io.listen(port)
-console.log(`Server using port ${port}.`)
+function subscribeToChannels({ client, connection }) {
+  r.table('channels')
+  .changes({ include_initial: true })
+  .run(connection)
+  .then((cursor) => {
+    cursor.each((err, channelRow) => client.emit('channel', channelRow.new_val));
+  });
+}
+
+
+r.connect({
+  host: 'localhost',
+  port: 28015,
+  db: 'chat_app'
+}).then((connection) => {
+  io.on('connection', (client) => {
+    client.on('createChannel', ({ name }) => {
+      createChannel({ connection, name });
+    });
+
+    client.on('subscribeToChannels', () => subscribeToChannels({
+      client,
+      connection,
+    }));
+  });
+});
+
+
+const port = 8000;
+io.listen(port);
+console.log('knock knock ', port);
 
