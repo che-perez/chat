@@ -21,8 +21,9 @@ body {
 }
 
 .channel-list {
-  background: #FF0000;
+  background: #FF4F34;
   position: fixed;
+  border-right: 5px solid white;
 
   width: 20%;
 
@@ -52,15 +53,16 @@ body {
 }
 
 .user-list {
-  background: #00FF00;
+  background: #2D3843;
 
   margin: 0 0 0 5%;
 
   width: 15%;
+  color:white;
 }
 
 .chat {
-  background: #0000FF;
+  background: rgb(255, 255, 255);
 
   width: 80%;
 }
