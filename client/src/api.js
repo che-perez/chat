@@ -1,12 +1,17 @@
-import openSocket from 'socket.io-client'
+import openSocket from 'socket.io-client';
 
-const socket = openSocket('http://localhost:8000')
+const socket = openSocket('http://localhost:8000');
 
-function subscribeToTimer(cb) {
-  socket.on('timer', timestamp => cb(timestamp))
-  socket.emit('subscribeToTimer', 1)
+function createChannel(name) {
+  socket.emit('createChannel', { name });
+}
+
+function subscribeToChannels(cb) {
+  socket.on('channel', channel => cb(channel));
+  socket.emit('subscribeToChannels');
 }
 
 export {
-  subscribeToTimer,
-}
+  createChannel,
+  subscribeToChannels,
+};

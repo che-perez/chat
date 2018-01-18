@@ -1,16 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Channel from './Channel'
+import { subscribeToChannels } from '../api';
+
+import Channel from './Channel';
 
 class ChannelList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        channels: [],
+    }
+
+    subscribeToChannels((channel) => {
+        this.setState(prevState => ({
+          channels: prevState.channels.concat([channel]),
+        }));
+      });
+
+  }
+
   render() {
-      return (
-          <div className="channel-list">
-            <Channel name="1" />
-            <Channel name="2" />
-            <Channel name="3" />
-          </div>
-      )
+    return (
+      <div>
+        <Channel channels={this.state.channels} />
+      </div>
+    );
   }
 }
 
