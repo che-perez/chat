@@ -11,7 +11,12 @@ function subscribeToChannels(cb) {
   socket.emit('subscribeToChannels');
 }
 
+function publishMessage({ channelId, message }) {
+  socket.emit('publishMessage', { channelId, ...message });
+}
+
 export {
   createChannel,
   subscribeToChannels,
+  publishMessage,
 };
