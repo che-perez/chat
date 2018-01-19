@@ -4,36 +4,13 @@ import { subscribeToMessage } from '../api';
 
 import Message from './Message';
 import MessageBox from './MessageBox';
+import ChannelList from './ChannelList';
 
 class Chat extends Component {
   constructor(props){
     super()
     this.state = {
-      messages: [{
-        id: 1,
-        content: "hi",
-        user: "Mofongo"
-      },
-      {
-        id: 2,
-        content: "hello",
-        user: "peter"
-      },
-      {
-        id: 3,
-        content: "hi",
-        user: "thompsom"
-      },
-      {
-        id: 4,
-        content: "no get out",
-        user: "Mofongo"
-      },
-      {
-        id: 5,
-        content: "why D:",
-        user: "peter"
-      }],
+      messages: [],
       users: ["Mofongo", "peter", "thompson"],
       colors: {}
     }
@@ -62,6 +39,8 @@ class Chat extends Component {
 
   render(){
     return(
+      <div>
+        <ChannelList />
       <div className="chat-box">
       <div className="chat">
         <div className="logo-container">
@@ -78,8 +57,9 @@ class Chat extends Component {
           )
         })}
       </div>
-        <MessageBox />
       </div>
+       <MessageBox />
+       </div>
     )
   }
 }

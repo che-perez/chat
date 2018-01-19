@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {  publishMessage } from '../api';
 
 class MessageBox extends Component {

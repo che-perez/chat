@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Channel (props){
     console.log(props);
@@ -6,7 +7,9 @@ function Channel (props){
         <div className="Channel">
             <ul>
                 {props.channels.map(channel =>
-                    <li key={channel.id}>{channel.name}</li>
+                    <Link to={`/channel-${channel.name}`} key={channel.id} onClick={() => props.selectedChannel(channel.name)}>
+                        <li>{channel.name}</li>
+                    </Link>
                 )}
             </ul>
         </div>
