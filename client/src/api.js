@@ -11,8 +11,13 @@ function subscribeToChannels(cb) {
   socket.emit('subscribeToChannels');
 }
 
-function publishMessage({ channelId, message }) {
-  socket.emit('publishMessage', { channelId, ...message });
+function publishMessage({ channelId, name, message }) {
+  socket.emit('publishMessage', { channelId, ...name, ...message });
+}
+
+function subscribeToMessage(channelId, cb) {
+  socket.on(`channelMessage:${channelId}`, line => cb(line));
+  socket.emit('subscribeToDrawingLines', channelId);
 }
 
 export {
