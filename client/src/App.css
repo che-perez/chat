@@ -21,8 +21,9 @@ body {
 }
 
 .channel-list {
-  background: #FF0000;
+  background: rgb(16, 101, 141);
   position: fixed;
+  border-right: 5px solid rgb(121, 179, 218);
 
   width: 20%;
 
@@ -52,17 +53,32 @@ body {
 }
 
 .user-list {
-  background: #00FF00;
-
+  background: #2D3843;
+padding:.5em;
   margin: 0 0 0 5%;
-
+  font-family: 'Rubik', sans-serif;
   width: 15%;
+  color:white;
 }
 
 .chat {
-  background: #0000FF;
+  background: rgb(255, 255, 255);
+  border-left: 40px solid rgb(190, 180, 180);
+  border-right: 40px solid rgb(190, 180, 180);
+  padding:1em;
+
 
   width: 80%;
+}
+
+#chat-logo{
+  position: absolute;
+  font-size: 150px;
+  color: rgba(0,0,0,0.2);
+  font-family: 'Lobster', cursive;
+  top: 45%;
+  left:40%;
+  
 }
 
 .channel, .user {
@@ -70,11 +86,24 @@ body {
 
   display: flex;
   justify-content: center;
+  
 }
 
 .message {
   padding: 5px;
-
+  
+  padding:.7em;
+  border-radius: 20px;
   display: flex;
-  justify-content: space-between;
+  width:fit-content;
+  background-color: aqua;
+}
+
+.message-owner{
+  font-family: 'Rubik', sans-serif;
+
+}
+
+.message-content{
+  font-family: 'Josefin Slab', serif;
 }
