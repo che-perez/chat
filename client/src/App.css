@@ -60,7 +60,10 @@ body {
   width: 15%;
   color:white;
 }
-
+.chat-box {
+  display: flex;
+  flex-direction: column;
+}
 .chat {
   background: rgb(255, 255, 255);
   border-left: 40px solid rgb(190, 180, 180);

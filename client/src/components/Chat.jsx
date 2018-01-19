@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
-import Message from './Message'
+import { subscribeToMessage } from '../api';
+
+import Message from './Message';
+import MessageBox from './MessageBox';
 
 class Chat extends Component {
-
   constructor(props){
     super()
     this.state = {
@@ -35,7 +37,13 @@ class Chat extends Component {
       users: ["Mofongo", "peter", "thompson"],
       colors: {}
     }
-    this.assignRandomColor = this.assignRandomColor.bind(this)
+    this.assignRandomColor = this.assignRandomColor.bind(this);
+
+    subscribeToMessage((message) => {
+      this.setState(prevState => ({
+        messages: prevState.messages.concat([message]),
+      }));
+    });
   }
 
   componentDidMount(){
@@ -54,6 +62,7 @@ class Chat extends Component {
 
   render(){
     return(
+      <div className="chat-box">
       <div className="chat">
         <div className="logo-container">
           <p id="chat-logo">Chattish</p>
@@ -69,10 +78,10 @@ class Chat extends Component {
           )
         })}
       </div>
+       <MessageBox />
+       </div>
     )
   }
-
-
 }
 
 export default Chat

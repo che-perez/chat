@@ -24,4 +24,5 @@ export {
   createChannel,
   subscribeToChannels,
   publishMessage,
+  subscribeToMessage,
 };
