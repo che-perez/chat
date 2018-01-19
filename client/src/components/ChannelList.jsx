@@ -20,10 +20,18 @@ class ChannelList extends Component {
   }
 
   render() {
+    console.log(this.state.channels)
     return (
-      <div>
-        <Channel channels={this.state.channels} />
-      </div>
+      <ul className="list-group">
+        {this.state.channels.map(channel => {
+          return(
+            <Channel
+              key={channel.id}
+              name={channel.name}
+            />
+          )
+        })}
+      </ul>
     );
   }
 }

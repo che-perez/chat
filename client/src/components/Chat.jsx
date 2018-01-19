@@ -63,22 +63,18 @@ class Chat extends Component {
   render(){
     return(
       <div className="chat-box">
-      <div className="chat">
-        <div className="logo-container">
-          <p id="chat-logo">Chattish</p>
+        <div className="chat">
+          {this.state.messages.map(message => {
+            return(
+              <Message
+                key={message.id}
+                owner={message.user}
+                content={message.content}
+                color={this.state.colors[message.user]}
+              />
+            )
+          })}
         </div>
-        {this.state.messages.map(message => {
-          return(
-            <Message
-              key={message.id}
-              owner={message.user}
-              content={message.content}
-              color={this.state.colors[message.user]}
-            />
-          )
-        })}
-      </div>
-        <MessageBox />
       </div>
     )
   }

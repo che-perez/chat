@@ -5,6 +5,15 @@ body {
 }
 
 .App {
+  height: 100vh;
+}
+
+/*
+body {
+  overflow: hidden;
+}
+
+.App {
   display: flex;
 
   height: 100vh;
@@ -23,7 +32,6 @@ body {
 .channel-tray {
   background: rgb(16, 101, 141);
   position: fixed;
-  border-right: 5px solid rgb(121, 179, 218);
 
   width: 20%;
 
@@ -54,7 +62,6 @@ body {
 
 .user-list {
   background: #2D3843;
-  padding:.5em;
   margin: 0 0 0 5%;
   font-family: 'Rubik', sans-serif;
   width: 15%;
@@ -138,3 +145,4 @@ body {
   font-size: 14px;
   height: 20px;
 }
+*/

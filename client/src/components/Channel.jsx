@@ -1,15 +1,9 @@
 import React from 'react'
 
 function Channel (props){
-    console.log(props);
+    console.log(props.name)
     return (
-        <div className="Channel">
-            <ul>
-                {props.channels.map(channel =>
-                    <li key={channel.id}>{channel.name}</li>
-                )}
-            </ul>
-        </div>
+        <li className="list-group-item list-group-item-action">{props.name}</li>
     )
 }
 

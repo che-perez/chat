@@ -17,7 +17,7 @@ class MessageBox extends Component {
 
   render() {
     return (
-      <div className="message-box">
+      <div className="align-self-end">
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.message}
             onChange={(evt) => this.setState({ message: evt.target.value })}
