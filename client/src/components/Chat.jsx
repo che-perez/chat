@@ -4,6 +4,7 @@ import { subscribeToMessage } from '../api';
 
 import Message from './Message';
 import MessageBox from './MessageBox';
+import ChannelList from './ChannelList';
 
 class Chat extends Component {
   constructor(props){

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.state = {
+            username: '',
+        }
     }
 
 
     render() {
-        console.log('username: ', this.props.username);
+        console.log('username: ', this.state.username);
         return (
             <div>
                 <form>
                     <input type="text" placeholder="Username"
-                        value={this.props.username}
+                        value={this.state.username}
                         maxLength="20"
                         onChange={(evt) => this.setState({ username: evt.target.value })} />
                 </form>
