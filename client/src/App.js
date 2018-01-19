@@ -8,10 +8,6 @@ import ChannelList from './components/ChannelList';
 import ChannelForm from './components/ChannelForm';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="App">

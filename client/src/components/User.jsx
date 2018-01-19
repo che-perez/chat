@@ -2,7 +2,7 @@ import React from 'react'
 
 function User (props){
   return (
-    <div class="user">
+    <div className="user">
       <p>{props.user_name}</p>
     </div>
   )
