@@ -14,7 +14,6 @@ class Chat extends Component {
       colors: {}
     }
     this.assignRandomColor = this.assignRandomColor.bind(this);
-
   }
 
   componentDidMount(){
@@ -56,6 +55,7 @@ class Chat extends Component {
       </div>
       <MessageBox channelId={this.props.channelId} username={this.props.username}/>
       </div>
+
     )
   }
 }
