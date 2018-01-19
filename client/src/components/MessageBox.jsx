@@ -18,14 +18,12 @@ class MessageBox extends Component {
     console.log('from box', this.props)
     return (
       <div className="message-box">
-      <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.message}
             onChange={(evt) => this.setState({ message: evt.target.value })}
             placeholder="Writte" required />
           <button type="submit">Send</button>
         </form>
-      </div>
       </div>
     )
   }
