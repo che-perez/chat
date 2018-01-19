@@ -11,7 +11,7 @@ body {
   width: 100vw;
 }
 
-.channel-list, .user-list, .chat {
+.channel-tray, .user-list, .chat-box {
   overflow-y: scroll;
 
   height: 100%;
@@ -20,7 +20,7 @@ body {
   flex-direction: column;
 }
 
-.channel-list {
+.channel-tray {
   background: rgb(16, 101, 141);
   position: fixed;
   border-right: 5px solid rgb(121, 179, 218);
@@ -30,7 +30,7 @@ body {
   animation: channelListSlideIn 0.1s linear forwards;
 }
 
-.channel-list:hover {
+.channel-tray:hover {
   animation: channelListSlideOut 0.1s linear forwards;
 }
 
@@ -58,19 +58,23 @@ body {
   margin: 0 0 0 5%;
   font-family: 'Rubik', sans-serif;
   width: 15%;
-  color:white;
+  color: #FFFFFF;
 }
+
 .chat-box {
-  display: flex;
-  flex-direction: column;
+  width: 80vw;
 }
+
 .chat {
   background: rgb(255, 255, 255);
   border-left: 40px solid rgb(190, 180, 180);
   border-right: 40px solid rgb(190, 180, 180);
   padding: 1em;
 
-  width: 80%;
+  box-sizing: border-box;
+
+  height: 100%;
+  width: 100%;
 }
 
 #chat-logo{
@@ -107,7 +111,7 @@ body {
   padding:.7em;
   border-radius: 20px;
   display: flex;
-  width:fit-content;
+  width: fit-content;
   background-color: aqua;
 
   z-index: 2;
@@ -123,4 +127,14 @@ body {
   font-family: 'Josefin Slab', serif;
 
   user-select: none;
+}
+
+.message-box form {
+  display: flex;
+}
+
+.message-box form input {
+  flex: 1;
+  font-size: 14px;
+  height: 20px;
 }

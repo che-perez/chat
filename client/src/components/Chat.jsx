@@ -78,8 +78,8 @@ class Chat extends Component {
           )
         })}
       </div>
-       <MessageBox />
-       </div>
+        <MessageBox />
+      </div>
     )
   }
 }
