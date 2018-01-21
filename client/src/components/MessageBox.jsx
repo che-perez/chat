@@ -8,11 +8,7 @@ class MessageBox extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    publishMessage({
-      channelId: this.props.channelId,
-      name: this.props.username,
-      message: this.state.message,
-    });
+    publishMessage(this.props.channelId, this.props.username, this.state.message);
     this.setState({
       message: '',
     });

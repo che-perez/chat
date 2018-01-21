@@ -15,15 +15,14 @@ class Chat extends Component {
     }
     this.assignRandomColor = this.assignRandomColor.bind(this);
 
-    subscribeToMessage((message) => {
+  }
+
+  componentDidMount(){
+    subscribeToMessage(this.props.channelId, (message) => {
       this.setState(prevState => ({
         messages: prevState.messages.concat([message]),
       }));
     });
-  }
-
-  componentDidMount(){
-    this.assignRandomColor()
   }
 
   assignRandomColor(){
@@ -37,6 +36,7 @@ class Chat extends Component {
   }
 
   render(){
+    console.log('messages ', this.state.messages)
     return(
       <div className="chat-box">
       <div className="chat">
@@ -54,7 +54,7 @@ class Chat extends Component {
           )
         })}
       </div>
-      <MessageBox channelId={this.props.channelId}/>
+      <MessageBox channelId={this.props.channelId} username={this.props.username}/>
       </div>
     )
   }

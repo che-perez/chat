@@ -20,14 +20,16 @@ function subscribeToChannels({ client, connection }) {
   });
 }
 
-function handleMessagePublish({ connection, name, message }) {
-  console.log('saving message to db');
-  r.table('message')
+function createMessage({ connection, channelId, name, message }) {
+  return r.table('message')
   .insert({
+    channelId,
     name,
     message,
     timestamp: new Date(),
-  }).run(connection);
+  })
+  .run(connection)
+  .then(() => console.log('New Message: ', name,': ', message));
 }
 
 function subscribeToMessage({ client, connection, channelId }) {
@@ -56,11 +58,9 @@ r.connect({
       connection,
     }));
 
-    client.on('publishMessage', (name, message) => handleMessagePublish({
-      name,
-      message,
-      connection,
-    }));
+   client.on('publishMessage', ({ channelId, name, message }) => {
+      createMessage({ connection, channelId, name, message });
+    });
 
     client.on('subscibeToMessage', (channelId) => {
       subscribeToMessage({
