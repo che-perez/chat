@@ -8,13 +8,18 @@ class MessageBox extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    publishMessage(this.state.message);
+    publishMessage({
+      channelId: this.props.channelId,
+      name: this.props.username,
+      message: this.state.message,
+    });
     this.setState({
       message: '',
     });
   }
 
   render() {
+    console.log('from box', this.props)
     return (
       <div className="message-box">
         <form onSubmit={this.handleSubmit}>

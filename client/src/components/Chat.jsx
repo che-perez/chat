@@ -4,7 +4,6 @@ import { subscribeToMessage } from '../api';
 
 import Message from './Message';
 import MessageBox from './MessageBox';
-import ChannelList from './ChannelList';
 
 class Chat extends Component {
   constructor(props){
@@ -39,8 +38,6 @@ class Chat extends Component {
 
   render(){
     return(
-      <div>
-        <ChannelList />
       <div className="chat-box">
       <div className="chat">
         <div className="logo-container">
@@ -57,9 +54,8 @@ class Chat extends Component {
           )
         })}
       </div>
+      <MessageBox channelId={this.props.channelId}/>
       </div>
-       <MessageBox />
-       </div>
     )
   }
 }
