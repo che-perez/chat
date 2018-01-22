@@ -62,7 +62,7 @@ r.connect({
       createMessage({ connection, channelId, name, message });
     });
 
-    client.on('subscibeToMessage', (channelId) => {
+    client.on('subscribeToMessage', (channelId) => {
       subscribeToMessage({
         client,
         connection,
