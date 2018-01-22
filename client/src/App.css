@@ -1,11 +1,31 @@
 
 
 body {
-  overflow: hidden;
 }
 
 .App {
   height: 100vh;
+}
+
+.notouch {
+  user-select: none;
+}
+
+.logo {
+  font-family: 'Lobster', cursive;
+  font-size: 32px;
+}
+
+#messageBoxInput {
+}
+
+.channel-tray {
+  font-family: 'Rubik', sans-serif;
+}
+
+.channel-list {
+  overflow-y: scroll;
+  user-select: none;
 }
 
 /*

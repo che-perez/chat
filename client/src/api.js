@@ -11,12 +11,12 @@ function subscribeToChannels(cb) {
   socket.emit('subscribeToChannels');
 }
 
-function publishMessage({ channelId, name, message }) {
-  socket.emit('publishMessage', { channelId, ...name, ...message });
+function publishMessage(channelId, name, message) {
+  socket.emit('publishMessage', channelId, name, message);
 }
 
 function subscribeToMessage(channelId, cb) {
-  socket.on(`channelMessage:${channelId}`, message => cb(message));
+  socket.on(`channelMessage: ${channelId}`, message => cb(message));
   socket.emit('subscribeToMessage', channelId);
 }
 

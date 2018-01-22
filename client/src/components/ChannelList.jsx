@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { subscribeToChannels } from '../api';
+import { subscribeToChannels } from '../api'
 
 import Channel from './Channel';
 
 class ChannelList extends Component {
+
   constructor(props) {
-    super(props);
+    super(props)
+
     this.state = {
         channels: [],
     }
 
     subscribeToChannels((channel) => {
-        this.setState(prevState => ({
-          channels: prevState.channels.concat([channel]),
-        }));
-      });
-
+      this.setState(prevState => ({
+        channels: prevState.channels.concat([channel]),
+      }));
+    });
   }
 
   render() {
-    console.log(this.state.channels)
     return (
-      <ul className="list-group">
+      <ul className="channel-list list-group">
         {this.state.channels.map(channel => {
           return(
             <Channel
               key={channel.id}
+              id={channel.id}
               name={channel.name}
+              selectChannel={this.props.selectChannel}
             />
           )
         })}

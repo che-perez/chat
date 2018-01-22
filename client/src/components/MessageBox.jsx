@@ -9,20 +9,31 @@ class MessageBox extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    publishMessage(this.state.message);
+    publishMessage(this.props.activeChannel, this.props.username, this.state.message)
     this.setState({
       message: '',
     });
   }
 
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({
+      message: e.target.value
+    })
+  }
+
   render() {
     return (
-      <div className="align-self-end">
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.message}
-            onChange={(evt) => this.setState({ message: evt.target.value })}
-            placeholder="Writte" required />
-          <button type="submit">Send</button>
+      <div>
+        <form className="form-inline row mx-auto" onSubmit={this.handleSubmit}>
+          <input
+            id="messageBoxInput"
+            type="text"
+            className="form-control col"
+            value={this.state.message}
+            onChange={this.handleChange}
+            placeholder="Enter message here" required />
+          <button type="submit" className="btn btn-primary col-1">Send</button>
         </form>
       </div>
     );

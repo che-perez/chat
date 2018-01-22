@@ -3,25 +3,50 @@ import './reset.css'
 import './normalize.css'
 import './App.css'
 
-import Chat from './components/Chat'
-import MessageBox from './components/MessageBox'
-import ChannelList from './components/ChannelList'
-import ChannelForm from './components/ChannelForm'
+import Footer from './components/Footer'
+import Home from './components/Home'
+import Chatting from './components/Chatting'
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      activeChannel: null,
+      username: "anon"
+    }
+    this.selectChannel = this.selectChannel.bind(this)
+    this.changeUsername = this.changeUsername.bind(this)
+  }
+
+  changeUsername(username){
+    this.setState({
+      username: username
+    })
+  }
+
+  selectChannel(channel){
+    this.setState({
+      activeChannel: channel
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="row">
-          <div className="col">
-            <ChannelForm />
-            <ChannelList />
-          </div>
-          <div className="col-10">
-            <Chat />
-            <MessageBox />
-          </div>
-        </div>
+        {this.state.activeChannel ? (
+          <Chatting
+            activeChannel={this.state.activeChannel}
+            selectChannel={this.selectChannel}
+            username={this.state.username}
+          />
+        ) : (
+          <Home
+            username={this.state.username}
+            changeUsername={this.changeUsername}
+            selectChannel={this.selectChannel}
+          />
+        )}
       </div>
     )
   }

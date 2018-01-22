@@ -3,26 +3,53 @@ import React, { Component } from 'react';
 import { createChannel } from '../api';
 
 class ChannelForm extends Component {
+
   state = {
     channelName: '',
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    createChannel(this.state.channelName);
+    e.preventDefault()
+    createChannel(this.state.channelName)
     this.setState({
-      channelName: '',
+      channelName: ''
     });
+  }
+
+  handleChange = (e) => {
+    e.preventDefault()
+    this.setState({
+      channelName: e.target.value
+    })
   }
 
   render() {
     return (
-      <div>
+      <div className="col-sm">
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.channelName}
-            onChange={(evt) => this.setState({ channelName: evt.target.value })}
-            placeholder="New Channel" required />
-          <button type="submit">Create</button>
+            <div className="form-group">
+              <label htmlFor="newChannelName" className="label pb-1 mt-2 notouch">Create Channel</label>
+              <input
+                id="newChannelName"
+                type="text"
+                className="form-control"
+                value={this.state.channelName}
+                onChange={this.handleChange}
+                placeholder="New Channel" required />
+            </div>
+            <div className="form-group">
+            {this.state.channelName ? (
+              this.state.channelName === ' ' ? (
+                this.setState({
+                  channelName: ''
+                })
+              ) : (
+                <button id="newChannelSubmitButton" type="submit" className="btn btn-primary">Create</button>
+              )) : (
+                <button
+                  id="newChannelSubmitButton" type="submit" className="btn btn-primary" disabled>Create</button>
+              )}
+            </div>
         </form>
       </div>
     );

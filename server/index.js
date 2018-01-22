@@ -1,6 +1,9 @@
 const io = require('socket.io')();
 const r = require('rethinkdb');
 
+// Channels
+
+// POST
 function createChannel({ connection, name }) {
   return r.table('channels')
   .insert({
@@ -11,6 +14,7 @@ function createChannel({ connection, name }) {
   .then(() => console.log('New Channel: ', name));
 }
 
+// GET
 function subscribeToChannels({ client, connection }) {
   r.table('channels')
   .changes({ include_initial: true })
@@ -20,24 +24,35 @@ function subscribeToChannels({ client, connection }) {
   });
 }
 
-function handleMessagePublish({ connection, name, message }) {
-  console.log('saving message to db');
+// Messages
+
+// GET
+function subscribeToMessage({ client, connection, channelId }) {
+  r.table('message')
+  .filter(r.row('channelId')
+  .eq(channelId))
+  .changes({include_initial: true, include_types: true })
+  .run(connection)
+  .then((cursor) => {
+    cursor.each((err, messageRow) => client.emit(`channelMessage: ${channelId}`, messageRow.new_val));
+  });
+}
+
+// POST
+function handleMessagePublish({ connection, channelId, name, message }) {
+  console.log('saving message to db')
   r.table('message')
   .insert({
+    channelId,
     name,
     message,
     timestamp: new Date(),
   }).run(connection);
 }
 
-function subscribeToMessage({ client, connection, channelId }) {
-  return r.table('message')
-  .filter(r.row('channelId').eq(channelId))
-  .changes({include_initial: true, include_types: true })
-  .run(connection)
-  .then((cursor) => {
-    cursor.each((err, messageRow) => client.emit(`channelMessage:${channelId}`, messageRow.new_val));
-  });
+
+function showSubmit(res){
+  console.log(res)
 }
 
 
@@ -47,6 +62,7 @@ r.connect({
   db: 'chat_app'
 }).then((connection) => {
   io.on('connection', (client) => {
+
     client.on('createChannel', ({ name }) => {
       createChannel({ connection, name });
     });
@@ -56,24 +72,29 @@ r.connect({
       connection,
     }));
 
-    client.on('publishMessage', (name, message) => handleMessagePublish({
-      name,
-      message,
-      connection,
-    }));
+    client.on('publishMessage', (channelId, name, message) => {
+      handleMessagePublish({
+        connection,
+        channelId,
+        name,
+        message,
+      })
+    }
+      );
 
-    client.on('subscibeToMessage', (channelId) => {
+    client.on('subscribeToMessage', (channelId) => {
       subscribeToMessage({
         client,
         connection,
         channelId,
       });
     });
+
   });
 });
 
 
 const port = 8000;
 io.listen(port);
-console.log('knock knock ', port);
+console.log('knock knock', port);
 
