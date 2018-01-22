@@ -3,7 +3,6 @@ import './reset.css'
 import './normalize.css'
 import './App.css'
 
-import Footer from './components/Footer'
 import Home from './components/Home'
 import Chatting from './components/Chatting'
 
@@ -13,6 +12,7 @@ class App extends Component {
     super(props)
     this.state = {
       activeChannel: null,
+      activeChannelLoaded: false,
       username: "anon"
     }
     this.selectChannel = this.selectChannel.bind(this)
@@ -27,14 +27,15 @@ class App extends Component {
 
   selectChannel(channel){
     this.setState({
-      activeChannel: channel
+      activeChannel: channel,
+      activeChannelLoaded: true
     })
   }
 
   render() {
     return (
       <div className="App">
-        {this.state.activeChannel ? (
+        {this.state.activeChannelLoaded ? (
           <Chatting
             activeChannel={this.state.activeChannel}
             selectChannel={this.selectChannel}

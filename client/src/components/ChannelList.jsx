@@ -10,7 +10,7 @@ class ChannelList extends Component {
     super(props)
 
     this.state = {
-        channels: [],
+      channels: [],
     }
 
     subscribeToChannels((channel) => {
@@ -23,7 +23,14 @@ class ChannelList extends Component {
   render() {
     return (
       <ul className="channel-list list-group">
-        {this.state.channels.map(channel => {
+        {this.state.channels.sort((a,b) => {
+          if (a.name < b.name)
+            return -1;
+          if (a.name > b.name)
+            return 1;
+          return 0;
+          }
+        ).map(channel => {
           return(
             <Channel
               key={channel.id}
