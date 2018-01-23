@@ -3,19 +3,19 @@ import './reset.css'
 import './normalize.css'
 import './App.css'
 
+import Chat from './components/Chat'
 import Home from './components/Home'
-import Chatting from './components/Chatting'
 
 class App extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      activeChannel: null,
+      activeChannel: [],
       activeChannelLoaded: false,
-      username: "anon"
+      channels: [],
+      messages: []
     }
-    this.selectChannel = this.selectChannel.bind(this)
     this.changeUsername = this.changeUsername.bind(this)
   }
 
@@ -25,27 +25,16 @@ class App extends Component {
     })
   }
 
-  selectChannel(channel, state){
-    this.setState({
-      activeChannel: channel,
-      activeChannelLoaded: state
-    })
-  }
-
   render() {
     return (
       <div className="App">
         {this.state.activeChannelLoaded ? (
-          <Chatting
-            activeChannel={this.state.activeChannel}
-            selectChannel={this.selectChannel}
-            username={this.state.username}
+          <Chat
+
           />
         ) : (
           <Home
-            username={this.state.username}
             changeUsername={this.changeUsername}
-            selectChannel={this.selectChannel}
           />
         )}
       </div>

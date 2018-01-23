@@ -1,34 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import Message from './Message';
+import ChannelTray from './ChannelTray'
+import ChatBox from './ChatBox'
 
-class Chat extends Component {
-  constructor(props){
-    super()
-  }
-
+class Chat extends React.Component {
   render(){
-    return(
-      <div className="chat-box">
-        <div className="chat">
-          {this.props.messages.sort((a,b) => {
-            if (a.timestamp < b.timestamp)
-              return -1;
-            if (a.timestamp > b.timestamp)
-              return 1;
-            return 0;
-          }).map(message => {
-
-              return(
-                <Message
-                  key={message.id}
-                  owner={message.name}
-                  content={message.message}
-                />
-              )
-
-          })}
-        </div>
+    return (
+      <div className="chat">
+        <ChannelTray />
+        <ChatBox />
       </div>
     )
   }

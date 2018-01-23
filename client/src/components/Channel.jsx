@@ -1,9 +1,22 @@
 import React from 'react'
 
-function Channel (props){
+class Channel extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  render(){
     return (
-        <li className="list-group-item list-group-item-action" onClick={() => props.selectChannel(props.id, true)}>{props.name}</li>
+      <div
+        className="channel"
+        onClick={this.handleSelect}
+      >
+        <p>Channel A</p>
+      </div>
     )
+  }
 }
 
 export default Channel
