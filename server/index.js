@@ -20,6 +20,28 @@ function subscribeToChannels({ client, connection }) {
   });
 }
 
+function createMessage({ connection, channelId, name, message }) {
+  return r.table('message')
+  .insert({
+    channelId,
+    name,
+    message,
+    timestamp: new Date(),
+  })
+  .run(connection)
+  .then(() => console.log('New Message: ', name,': ', message));
+}
+
+function subscribeToMessage({ client, connection, channelId }) {
+  return r.table('message')
+  .filter(r.row('channelId').eq(channelId))
+  .changes({include_initial: true, include_types: true })
+  .run(connection)
+  .then((cursor) => {
+    cursor.each((err, messageRow) => client.emit(`channelMessage:${channelId}`, messageRow.new_val));
+  });
+}
+
 
 r.connect({
   host: 'localhost',
@@ -35,6 +57,18 @@ r.connect({
       client,
       connection,
     }));
+
+   client.on('publishMessage', ({ channelId, name, message }) => {
+      createMessage({ connection, channelId, name, message });
+    });
+
+    client.on('subscribeToMessage', (channelId) => {
+      subscribeToMessage({
+        client,
+        connection,
+        channelId,
+      });
+    });
   });
 });
 
@@ -42,4 +76,3 @@ r.connect({
 const port = 8000;
 io.listen(port);
 console.log('knock knock ', port);
-
