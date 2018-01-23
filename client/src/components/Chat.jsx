@@ -18,13 +18,15 @@ class Chat extends Component {
               return 1;
             return 0;
           }).map(message => {
-            return(
-              <Message
-                key={message.id}
-                owner={message.name}
-                content={message.message}
-              />
-            )
+
+              return(
+                <Message
+                  key={message.id}
+                  owner={message.name}
+                  content={message.message}
+                />
+              )
+
           })}
         </div>
       </div>

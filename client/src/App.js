@@ -25,10 +25,10 @@ class App extends Component {
     })
   }
 
-  selectChannel(channel){
+  selectChannel(channel, state){
     this.setState({
       activeChannel: channel,
-      activeChannelLoaded: true
+      activeChannelLoaded: state
     })
   }
 

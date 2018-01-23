@@ -14,33 +14,46 @@ class Chatting extends Component {
     super(props)
     this.state = {
       messages: [],
-      messagesLoaded: false
+      currentChannel: this.props.activeChannel
     }
     this.messageFeed = this.messageFeed.bind(this)
     this.selectChannel = this.selectChannel.bind(this)
+    this.clear = this.clear.bind(this)
   }
 
-  messageFeed(){
-    subscribeToMessage(this.props.activeChannel, (message) => {
+  componentDidMount(){
+    subscribeToMessage(this.state.currentChannel, (message) => {
       this.setState(prevState => ({
         messages: prevState.messages.concat([message])
       }))
     })
   }
 
-  componentDidMount(){
-    this.messageFeed()
-    this.setState({
-      messagesLoaded: true
-    })
+  componentWillUnmount(){
+    console.log("unmounting")
   }
 
-  selectChannel(channel){
-    console.log(this.state.messages)
+  selectChannel(channel, state){
+    this.clear()
+    this.props.selectChannel(channel, false)
+  }
+
+  clear(){
     this.setState({
       messages: []
     })
-    this.props.selectChannel(channel)
+  }
+
+  messageFeed(){
+    console.log("calling")
+    this.clear()
+    console.log("cleared", this.state.messages)
+    subscribeToMessage(this.props.activeChannel, (message) => {
+      this.setState(prevState => ({
+        messages: prevState.messages.concat([message])
+      }))
+    })
+    console.log("from feed", this.state.messages)
   }
 
   render(){
@@ -54,14 +67,10 @@ class Chatting extends Component {
           />
         </div>
         <div className="col-10">
-          {this.state.messagesLoaded ? (
-            <Chat
-              messages={this.state.messages}
-              activeChannel={this.props.activeChannel}
-            />
-          ) : (
-            <p>Loading...</p>
-          )}
+          <Chat
+            messages={this.state.messages}
+            activeChannel={this.props.activeChannel}
+          />
           <MessageBox
             username={this.props.username}
             activeChannel={this.props.activeChannel}
