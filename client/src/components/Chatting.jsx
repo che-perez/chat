@@ -17,6 +17,7 @@ class Chatting extends Component {
       messagesLoaded: false
     }
     this.messageFeed = this.messageFeed.bind(this)
+    this.selectChannel = this.selectChannel.bind(this)
   }
 
   messageFeed(){
@@ -35,6 +36,10 @@ class Chatting extends Component {
   }
 
   selectChannel(channel){
+    console.log(this.state.messages)
+    this.setState({
+      messages: []
+    })
     this.props.selectChannel(channel)
   }
 
@@ -45,7 +50,7 @@ class Chatting extends Component {
           <Logo />
           <ChannelForm />
           <ChannelList
-            selectChannel={this.props.selectChannel}
+            selectChannel={this.selectChannel}
           />
         </div>
         <div className="col-10">
