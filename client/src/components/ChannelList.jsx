@@ -22,7 +22,7 @@ class ChannelList extends Component {
   render() {
     return (
       <div>
-        <Channel channels={this.state.channels} />
+        <Channel channels={this.state.channels} selectedChannel={this.props.selectedChannel}/>
       </div>
     );
   }
