@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './reset.css'
 import './App.css'
 
-import Home from './components/Home';
 import ChannelList from './components/ChannelList';
 import ChannelForm from './components/ChannelForm';
 import Chat from './components/Chat';
