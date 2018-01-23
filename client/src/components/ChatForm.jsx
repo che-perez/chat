@@ -1,10 +1,38 @@
 import React from 'react'
 
+import { publishMessage } from '../api'
+
 class ChatForm extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      message: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(e){
+    e.preventDefault()
+    this.setState({
+      message: e.target.value
+    })
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    publishMessage(this.props.activeChannel, this.props.username, this.state.message)
+  }
+
   render(){
     return (
-      <form>
-        <input></input>
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          value={this.state.message}
+          placeholder="Enter message"
+          onChange={this.handleChange}
+        ></input>
         <button>Send</button>
       </form>
     )

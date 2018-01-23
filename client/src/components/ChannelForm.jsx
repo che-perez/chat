@@ -1,14 +1,13 @@
 import React from 'react'
 
-import ChannelList from './ChannelList'
-import Logo from './Logo'
+import { createChannel } from '../api'
 
-class UsernameForm extends React.Component {
+class ChannelForm extends React.Component {
 
   constructor(props){
     super(props)
     this.state = {
-      username: "Anonymous"
+      name: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,14 +16,15 @@ class UsernameForm extends React.Component {
   handleChange(e){
     e.preventDefault()
     this.setState({
-      username: e.target.value
+      name: e.target.value
     })
-    console.log(this.state.username)
   }
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.changeUsername(this.state.username)
+    if (this.state.name){
+      createChannel(this.state.name)
+    }
   }
 
   render(){
@@ -32,14 +32,14 @@ class UsernameForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
-          value={this.state.username}
-          placeholder="Enter a name (optional)"
+          value={this.state.name}
+          placeholder="New channel name"
           onChange={this.handleChange}
         ></input>
-        <button>Submit</button>
+        <button>Create</button>
       </form>
     )
   }
 }
 
-export default UsernameForm
+export default ChannelForm

@@ -4,16 +4,15 @@ class Channel extends React.Component {
 
   constructor(props){
     super(props)
-    this.handleSelect = this.handleSelect.bind(this)
   }
 
   render(){
     return (
       <div
         className="channel"
-        onClick={this.handleSelect}
+        onClick={() => this.props.selectChannel(this.props.id)}
       >
-        <p>Channel A</p>
+        <p>{this.props.name}</p>
       </div>
     )
   }
