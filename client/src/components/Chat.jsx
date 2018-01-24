@@ -50,14 +50,12 @@ class Chat extends React.Component {
   render(){
     return (
       <div className="chat">
+        <p>Chat</p>
         <ChannelTray
           channels={this.props.channels}
           selectChannel={this.props.selectChannel}
         />
-        <ChatBox
-          activeChannel={this.props.activeChannel}
-          username={this.props.username}
-        />
+        {this.isReady()}
       </div>
     )
   }
