@@ -51,8 +51,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Username is {this.state.username}</p>
-        <p>activeChannel is {this.state.activeChannel}</p>
         {this.state.activeChannelLoaded ? (
           <Chat
             activeChannel={this.state.activeChannel}
