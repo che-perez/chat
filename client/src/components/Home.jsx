@@ -9,6 +9,10 @@ class Home extends React.Component {
   render(){
     return (
       <div className="home">
+<<<<<<< HEAD
+=======
+        
+>>>>>>> css/bootstrap
         <Logo />
         <UsernameForm
           changeUsername={this.props.changeUsername}
