@@ -24,14 +24,17 @@ class ChannelForm extends React.Component {
     e.preventDefault()
     if (this.state.name){
       let uniqueName = true
-      let newChannelId = null
       this.props.channels.map(channel => {
         if (channel.name === this.state.name){
           uniqueName = false
         }
+        return null
       })
       if (uniqueName === true){
         createChannel(this.state.name)
+        this.setState({
+          name: ''
+        })
       }
     }
   }

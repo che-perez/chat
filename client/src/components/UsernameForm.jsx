@@ -1,8 +1,5 @@
 import React from 'react'
 
-import ChannelList from './ChannelList'
-import Logo from './Logo'
-
 class UsernameForm extends React.Component {
 
   constructor(props){
