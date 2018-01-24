@@ -8,7 +8,7 @@ function createChannel({ connection, name }) {
   return r.table('channels')
   .insert({
     name,
-    timestamp: new Date(),
+    timestamp: Date.now(),
   })
   .run(connection)
   .then(() => console.log('New Channel: ', name))
@@ -46,7 +46,7 @@ function handleMessagePublish({ connection, channelId, name, message }) {
     channelId,
     name,
     message,
-    timestamp: new Date(),
+    timestamp: Date.now(),
   }).run(connection)
 }
 
