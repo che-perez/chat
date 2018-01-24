@@ -41,7 +41,7 @@ class ChannelForm extends React.Component {
 
   render(){
     return (
-      <div className ="col-sm">
+      <div className ="">
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
