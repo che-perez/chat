@@ -41,16 +41,21 @@ class ChannelForm extends React.Component {
 
   render(){
     return (
-      <div className ="">
-      <form onSubmit={this.handleSubmit}>
+      <div className ="messaging center-block">
+      <div className="row">
+      <div className=" col-md-12">
+      <form className="input-group" onSubmit={this.handleSubmit}>
         <input
           type="text"
           value={this.state.name}
-          placeholder="New Channel Name"
+          placeholder="New Channel"
+          className="form-control"
           onChange={this.handleChange}
         ></input>
-        <button>Create</button>
+        <button className="btn btn-primary">Create</button>
       </form>
+      </div>
+      </div>
       </div>
     )
   }

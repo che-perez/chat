@@ -7,7 +7,8 @@ class Message extends React.Component {
     return (
       <div className="message">
         <Moment fromNow date={this.props.date} />
-        <p>{this.props.name}: {this.props.message}</p>
+        <p>{this.props.name}:  <span className="chat-message">{this.props.message}</span></p>
+
       </div>
     )
   }
