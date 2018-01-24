@@ -1,5 +1,5 @@
-const io = require('socket.io')();
-const r = require('rethinkdb');
+const io = require('socket.io')()
+const r = require('rethinkdb')
 
 // Channels
 
@@ -11,7 +11,7 @@ function createChannel({ connection, name }) {
     timestamp: new Date(),
   })
   .run(connection)
-  .then(() => console.log('New Channel: ', name));
+  .then(() => console.log('New Channel: ', name))
 }
 
 // GET
@@ -20,8 +20,8 @@ function subscribeToChannels({ client, connection }) {
   .changes({ include_initial: true })
   .run(connection)
   .then((cursor) => {
-    cursor.each((err, channelRow) => client.emit('channel', channelRow.new_val));
-  });
+    cursor.each((err, channelRow) => client.emit('channel', channelRow.new_val))
+  })
 }
 
 // Messages
@@ -34,8 +34,8 @@ function subscribeToMessage({ client, connection, channelId }) {
   .changes({include_initial: true, include_types: true })
   .run(connection)
   .then((cursor) => {
-    cursor.each((err, messageRow) => client.emit(`channelMessage: ${channelId}`, messageRow.new_val));
-  });
+    cursor.each((err, messageRow) => client.emit(`channelMessage: ${channelId}`, messageRow.new_val))
+  })
 }
 
 // POST
@@ -47,7 +47,7 @@ function handleMessagePublish({ connection, channelId, name, message }) {
     name,
     message,
     timestamp: new Date(),
-  }).run(connection);
+  }).run(connection)
 }
 
 
@@ -64,13 +64,13 @@ r.connect({
   io.on('connection', (client) => {
 
     client.on('createChannel', ({ name }) => {
-      createChannel({ connection, name });
-    });
+      createChannel({ connection, name })
+    })
 
     client.on('subscribeToChannels', () => subscribeToChannels({
       client,
       connection,
-    }));
+    }))
 
     client.on('publishMessage', (channelId, name, message) => {
       handleMessagePublish({
@@ -80,21 +80,21 @@ r.connect({
         message,
       })
     }
-      );
+      )
 
     client.on('subscribeToMessage', (channelId) => {
       subscribeToMessage({
         client,
         connection,
         channelId,
-      });
-    });
+      })
+    })
 
-  });
-});
+  })
+})
 
 
-const port = 8000;
-io.listen(port);
-console.log('knock knock', port);
+const port = 8000
+io.listen(port)
+console.log('knock knock', port)
 
