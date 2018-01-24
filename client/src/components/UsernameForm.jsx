@@ -27,6 +27,7 @@ class UsernameForm extends React.Component {
   }
 
   render(){
+    console.log(this.state.username)
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -34,6 +35,7 @@ class UsernameForm extends React.Component {
           value={this.state.username}
           placeholder="Enter a name (optional)"
           onChange={this.handleChange}
+          maxLength="20"
         ></input>
         <button>Submit</button>
       </form>
