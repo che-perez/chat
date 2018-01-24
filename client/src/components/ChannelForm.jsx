@@ -41,7 +41,7 @@ class ChannelForm extends React.Component {
 
   render(){
     return (
-      <div className ="">
+      <div className ="channel-form">
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
