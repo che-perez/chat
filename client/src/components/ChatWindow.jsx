@@ -3,11 +3,6 @@ import React from 'react'
 import Message from './Message'
 
 class ChatWindow extends React.Component {
-
-  constructor(props){
-    super(props)
-  }
-
   render(){
     return (
       <div className="chat-window">

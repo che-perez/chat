@@ -5,11 +5,6 @@ import ChannelList from './ChannelList'
 import Logo from './Logo'
 
 class ChannelTray extends React.Component {
-
-  constructor(props){
-    super(props)
-  }
-
   render(){
     return (
       <div className="channel-tray">

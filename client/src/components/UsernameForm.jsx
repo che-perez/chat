@@ -24,7 +24,6 @@ class UsernameForm extends React.Component {
   }
 
   render(){
-    console.log(this.state.username)
     return (
       <form onSubmit={this.handleSubmit}>
         <input
