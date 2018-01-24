@@ -1,61 +1,62 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import { subscribeToMessage } from '../api';
+import ChannelTray from './ChannelTray'
+import ChatBox from './ChatBox'
 
-import Message from './Message';
-import MessageBox from './MessageBox';
+class Chat extends React.Component {
 
-class Chat extends Component {
   constructor(props){
-    super()
+    super(props)
     this.state = {
-      messages: [],
-      users: ["Mofongo", "peter", "thompson"],
-      colors: {}
+      chatLoaded: false,
+      prevChannel: null
     }
-    this.assignRandomColor = this.assignRandomColor.bind(this);
+    this.isReady = this.isReady.bind(this)
   }
 
   componentDidMount(){
-    subscribeToMessage(this.props.channelId, (message) => {
-      this.setState(prevState => ({
-        messages: prevState.messages.concat([message]),
-      }));
-    });
-  }
-
-  assignRandomColor(){
-    let colors = {}
-    for (let i = 0; i < this.state.users.length; i++){
-      colors[this.state.users[i]] = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16)
-    }
     this.setState({
-      colors: colors
+      chatLoaded: true,
+      prevChannel: this.props.activeChannel
     })
   }
 
-  render(){
-    console.log('messages ', this.state.messages)
-    return(
-      <div className="chat-box">
-      <div className="chat">
-        <div className="logo-container">
-          <p id="chat-logo">Chattish</p>
-        </div>
-        {this.state.messages.map(message => {
-          return(
-            <Message
-              key={message.id}
-              owner={message.user}
-              content={message.content}
-              color={this.state.colors[message.user]}
-            />
-          )
-        })}
-      </div>
-      <MessageBox channelId={this.props.channelId} username={this.props.username}/>
-      </div>
+  componentDidUpdate(){
+    if (this.state.prevChannel === this.props.activeChannel){
+      return
+    } else {
+      this.setState({
+        chatLoaded: false,
+        prevChannel: this.props.activeChannel
+      })
+    }
+  }
 
+  isReady(){
+    if (this.state.chatLoaded){
+      return (
+        <ChatBox
+          activeChannel={this.props.activeChannel}
+          username={this.props.username}
+        />
+      )
+    } else {
+      this.setState({
+        chatLoaded: true
+      })
+    }
+  }
+
+  render(){
+    return (
+      <div className="chat">
+        <p>Chat</p>
+        <ChannelTray
+          channels={this.props.channels}
+          selectChannel={this.props.selectChannel}
+        />
+        {this.isReady()}
+      </div>
     )
   }
 }

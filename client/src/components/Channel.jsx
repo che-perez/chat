@@ -1,24 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-function trimName(name) {
-    name = name.toLowerCase().replace(/\s+/g, '');
-    return name;
-}
+class Channel extends React.Component {
 
-function Channel (props){
-    console.log(props);
+  constructor(props){
+    super(props)
+  }
+
+  render(){
     return (
-        <div className="Channel">
-            <ul>
-                {props.channels.map(channel =>
-                    <Link to={`/channel/${trimName(channel.name)}`} key={channel.id} onClick={() => props.selectedChannel(channel.name, channel.id)}>
-                        <li>{channel.name}</li>
-                    </Link>
-                )}
-            </ul>
-        </div>
+      <div
+        className="channel"
+        onClick={() => this.props.selectChannel(this.props.id)}
+      >
+        <p>{this.props.name}</p>
+      </div>
     )
+  }
 }
 
 export default Channel

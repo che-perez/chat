@@ -1,31 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-import { createChannel } from '../api';
+import { createChannel } from '../api'
 
-class ChannelForm extends Component {
-  state = {
-    channelName: '',
+class ChannelForm extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      name: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    createChannel(this.state.channelName);
+  handleChange(e){
+    e.preventDefault()
     this.setState({
-      channelName: '',
-    });
+      name: e.target.value
+    })
   }
 
-  render() {
+  handleSubmit(e){
+    e.preventDefault()
+    if (this.state.name){
+      let uniqueName = true
+      this.props.channels.map(channel => {
+        if (channel.name === this.state.name){
+          uniqueName = false
+        }
+      })
+      if (uniqueName === true){
+        createChannel(this.state.name)
+      }
+    }
+  }
+
+  render(){
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.channelName}
-            onChange={(evt) => this.setState({ channelName: evt.target.value })}
-            placeholder="New Channel" required />
-          <button type="submit">Create</button>
-        </form>
-      </div>
-    );
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          value={this.state.name}
+          placeholder="New channel name"
+          onChange={this.handleChange}
+        ></input>
+        <button>Create</button>
+      </form>
+    )
   }
 }
-export default ChannelForm;
+
+export default ChannelForm

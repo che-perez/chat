@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-import { subscribeToChannels } from '../api';
+import Channel from './Channel'
 
-import Channel from './Channel';
-
-class ChannelList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        channels: [],
-    }
-
-    subscribeToChannels((channel) => {
-        this.setState(prevState => ({
-          channels: prevState.channels.concat([channel]),
-        }));
-      });
-
-  }
-
-  render() {
+class ChannelList extends React.Component {
+  render(){
     return (
-      <div>
-        <Channel channels={this.state.channels} selectedChannel={this.props.selectedChannel}/>
+      <div className="channel-list">
+        {this.props.channels.sort((a,b) => {
+          if (a.name < b.name)
+            return -1
+          if (a.name > b.name)
+            return 1
+          return 0
+          })
+        .map((channel) => {
+          return (
+            <Channel
+              key={channel.id}
+              id={channel.id}
+              name={channel.name}
+              selectChannel={this.props.selectChannel}
+            />
+        )})}
       </div>
-    );
+    )
   }
 }
 
