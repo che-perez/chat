@@ -47,9 +47,10 @@ class ChannelForm extends React.Component {
           type="text"
           value={this.state.name}
           placeholder="New Channel Name"
+          className="form-control"
           onChange={this.handleChange}
         ></input>
-        <button>Create</button>
+        <button className="btn btn-primary">Create</button>
       </form>
       </div>
     )

@@ -73,13 +73,8 @@ body{
 
 .chat-form {
   position: absolute;
-  
   bottom: 0;
   
-}
-
-#messageBoxInput{
-  width:74vw;
 }
 
 .message{

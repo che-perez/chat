@@ -31,18 +31,22 @@ class ChatForm extends React.Component {
 
   render(){
     return (
-      <div className="form-inline row mx-auto chat-form">
-      <form onSubmit={this.handleSubmit}>
-        <input
-          id="messageBoxInput"
+      <div className="messaging center-block">
+      <div className="row">
+      <div className=" col-md-12">
+      <form className="input-group" onSubmit={this.handleSubmit}>
+
+        <input 
           type="text"
           value={this.state.message}
-          className="form-control col"
+          className="form-control"
           placeholder="Enter message"
           onChange={this.handleChange}
         ></input>
-        <button className="btn btn-primary">Send</button>
+        <button className="btn btn-primary">Send</button>  
       </form>
+      </div>
+      </div>
       </div>
     )
   }
