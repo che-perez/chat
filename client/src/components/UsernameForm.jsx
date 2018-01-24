@@ -8,7 +8,7 @@ class UsernameForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      username: "Anonymous"
+      username: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,12 +19,11 @@ class UsernameForm extends React.Component {
     this.setState({
       username: e.target.value
     })
-    console.log(this.state.username)
   }
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.changeUsername(this.state.username)
+    this.props.changeUsername(this.state.username || "Anonymous")
   }
 
   render(){
