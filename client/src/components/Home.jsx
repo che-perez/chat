@@ -14,7 +14,6 @@ class Home extends React.Component {
   render(){
     return (
       <div className="home">
-        <p>Home</p>
         <Logo />
         <UsernameForm
           changeUsername={this.props.changeUsername}

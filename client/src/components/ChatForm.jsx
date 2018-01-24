@@ -21,7 +21,12 @@ class ChatForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    publishMessage(this.props.activeChannel, this.props.username, this.state.message)
+    if (this.state.message){
+      publishMessage(this.props.activeChannel, this.props.username, this.state.message)
+    }
+    this.setState({
+      message: ''
+    })
   }
 
   render(){
