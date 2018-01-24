@@ -20,6 +20,7 @@ class ChatWindow extends React.Component {
               id={message.id}
               name={message.name}
               message={message.message}
+              date={message.timestamp}
             />
         )})
         }
