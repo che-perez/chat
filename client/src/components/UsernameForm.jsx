@@ -25,16 +25,23 @@ class UsernameForm extends React.Component {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div className="messaging center-block">
+      <div className="row">
+      <div className=" col-md-12">
+      <form className="input-group" onSubmit={this.handleSubmit}>
         <input
           type="text"
           value={this.state.username}
+          className="form-control"
           placeholder="Enter a name (optional)"
           onChange={this.handleChange}
           maxLength="20"
         ></input>
-        <button>Submit</button>
+        <button className="btn btn-primary">Submit</button>
       </form>
+      </div>
+      </div>
+      </div>
     )
   }
 }

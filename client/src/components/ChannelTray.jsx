@@ -8,7 +8,7 @@ class ChannelTray extends React.Component {
   render(){
     return (
       <div className="channel-tray">
-        <Logo />
+        <p className="logo-chatroom">Chattish</p>
         <ChannelForm
           channels={this.props.channels}
         />
