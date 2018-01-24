@@ -40,7 +40,7 @@ class ChatForm extends React.Component {
           type="text"
           value={this.state.message}
           className="form-control"
-          placeholder="Enter message"
+          placeholder=" Enter message"
           onChange={this.handleChange}
         ></input>
         <button className="btn btn-primary">Send</button>  

@@ -3,6 +3,19 @@ import React from 'react'
 import Message from './Message'
 
 class ChatWindow extends React.Component {
+
+  scrollToBottom(){
+    this.messagesEnd.scrollIntoView({})
+  }
+
+  componentDidMount(){
+    this.scrollToBottom()
+  }
+
+  componentDidUpdate(){
+    this.scrollToBottom()
+  }
+
   render(){
     return (
       <div className="chat-window">
@@ -24,6 +37,7 @@ class ChatWindow extends React.Component {
             />
         )})
         }
+        <div id="end-of-chat" ref={(el) => {this.messagesEnd = el}}></div>
       </div>
     )
   }

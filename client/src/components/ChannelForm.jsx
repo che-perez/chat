@@ -42,7 +42,7 @@ class ChannelForm extends React.Component {
   render(){
     return (
       <div className ="messaging center-block">
-      <div className="row">
+      <div className="row chat-send">
       <div className=" col-md-12">
       <form className="input-group" onSubmit={this.handleSubmit}>
         <input
