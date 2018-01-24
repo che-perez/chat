@@ -14,7 +14,9 @@ class ChannelTray extends React.Component {
     return (
       <div className="channel-tray">
         <Logo />
-        <ChannelForm />
+        <ChannelForm
+          channels={this.props.channels}
+        />
         <ChannelList
           channels={this.props.channels}
           selectChannel={this.props.selectChannel}

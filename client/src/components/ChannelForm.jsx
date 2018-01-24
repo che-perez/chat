@@ -23,7 +23,15 @@ class ChannelForm extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     if (this.state.name){
-      createChannel(this.state.name)
+      let uniqueName = true
+      this.props.channels.map(channel => {
+        if (channel.name === this.state.name){
+          uniqueName = false
+        }
+      })
+      if (uniqueName === true){
+        createChannel(this.state.name)
+      }
     }
   }
 
