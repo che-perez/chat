@@ -6,7 +6,7 @@ class Message extends React.Component {
     console.log('msg', this.props)
     return (
       <div className="message">
-        <Moment date={this.props.date} />
+        <Moment fromNow date={this.props.date} />
         <p>{this.props.name}: {this.props.message}</p>
       </div>
     )
