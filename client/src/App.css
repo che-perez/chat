@@ -25,6 +25,7 @@ body{
   font-family: Lobster;
   font-size: 130px;
   color:#ffffff;
+  user-select: none;
   
 }
 
@@ -33,6 +34,7 @@ body{
   font-size: 50px;
   color:#ffffff;
   text-align: center;
+  user-select: none;
   
 }
 
@@ -103,3 +105,100 @@ body{
 .chat-message{
   font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
+
+/* ============================================================================= */
+/* phones */
+@media (max-width: 768px) { 
+  body{
+  /* background-color: #565685; */
+  width:100vw;
+  overflow:visible;
+  
+  }
+
+  .logo{
+    font-size:70px;
+    margin-bottom: .5em;
+    margin-top:.5em;
+  }
+  .channel-list{
+    width:60vw;
+    border:0;
+  }
+  .channel-tray{
+    width:100vw;
+   align-items: center;
+  }
+  .chat{
+    display:flex;
+    flex-direction: column;
+    overflow-y:scroll;
+  }
+  .chat-box{
+    width:100vw;
+  }
+  
+   .btn{
+    font-size:10px;
+    width:20vw;
+  } 
+  
+  
+
+ }
+
+ /* ============================================================================= */
+
+/* Ipad */
+@media (min-width: 768px) and (max-width: 992px) { 
+  body{
+    /* background-color: #daa32d; */
+    }
+    .logo{
+      font-size:120px;
+      margin:1em;
+    }
+    .channel-list{
+      width:30vw;
+      border:0;
+    }
+}
+
+/* ============================================================================= */
+
+/* Ipad-pro */
+@media (min-width: 992px) and (max-width: 1200px) { 
+  body{
+    /* background-color: #eb1dbe; */
+    }
+    .logo{
+      font-size:150px;
+      margin:1em;
+    }
+    .channel-list{
+      width:30vw;
+      border:0;
+    }
+    .channel-tray{
+      width:50vw;
+    }
+}
+
+/* ============================================================================= */
+
+
+@media (min-width: 1200px) { 
+  body{
+    /* background-color: #2ce41b; */
+    }
+
+    .channel-tray{
+      width:50vw;
+    }
+    .channel-list{
+      width:30vw;
+      border:0;
+    }
+ }
+
+ /* ============================================================================= */
