@@ -17,9 +17,12 @@ if(this.props.date >= this.props.date + (604800*2)){
 }
 
     return (
+      <div className="message-bubble">
+      <p className="date">{date}</p>
       <div className="message">
-        {date}
+        
         <p>{this.props.name}: <span className="chat-message">{this.props.message}</span></p>
+      </div>
       </div>
     )
   }
