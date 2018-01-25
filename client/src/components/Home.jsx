@@ -14,11 +14,11 @@ class Home extends React.Component {
         <UsernameForm
           changeUsername={this.props.changeUsername}
         />
-        <p>Create a new app...</p>
+        <br />
         <ChannelForm
           channels={this.props.channels}
         />
-        <p>Or select an existing channel.</p>
+        <br />
         <ChannelList
           channels={this.props.channels}
           selectChannel={this.props.selectChannel}

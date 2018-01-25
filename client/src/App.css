@@ -5,16 +5,33 @@ body{
 }
 
 .App{
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .home{
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
-  align-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align:center;
+      -ms-flex-align:center;
+          align-items:center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   height:100vh;
 }
 .list-group-item:hover{
@@ -25,7 +42,10 @@ body{
   font-family: Lobster;
   font-size: 130px;
   color:#ffffff;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   
 }
 
@@ -34,13 +54,21 @@ body{
   font-size: 50px;
   color:#ffffff;
   text-align: center;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   
 }
 
 .chat{
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 100vw;
   overflow: hidden;
  
@@ -48,9 +76,15 @@ body{
 }
 
 .channel-tray{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   background-color: #17174e;
   height:100vh;
   padding:2em;
@@ -71,17 +105,29 @@ body{
 
 
 .chat-box{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column; 
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; 
   background-color:#ffffff;
   width:100vw;
   height:100vh;
 }
 
 .chat-window{
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction:column;
-  justify-content: flex-start;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+      -ms-flex-direction:column;
+          flex-direction:column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   overflow-y: scroll;
   padding-left: 1em;
   padding-top:1em;
@@ -101,6 +147,8 @@ body{
   color:white;
   padding:.6em;
   border-radius:10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   font-family: futura;
   font-size: 15px;
@@ -135,11 +183,18 @@ body{
   }
   .channel-tray{
     width:100vw;
-   align-items: center;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
   }
   .chat{
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     overflow-y:scroll;
   }
   .chat-box{
