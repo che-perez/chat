@@ -1,9 +1,15 @@
 {
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for RethinkDB",
+  "main": "index.js",
+  "author": "Josue Perez",
+  "license": "MIT",
   "dependencies": {
-    "nodemon": "^1.11.0",
-    "socket.io": "^2.0.3",
-    "rethinkdb": "^2.3.3"
-  },
+    "nodemon": "^1.14.11",
+    "rethinkdb": "^2.3.3",
+    "socket.io": "^2.0.4"
+    },
   "scripts": {
     "start": "nodemon index"
   }
