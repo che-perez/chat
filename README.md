@@ -7,4 +7,9 @@ A single-page chat application built using React and socket.io.
 - React
 - socket.io
 - RethinkDB
-- RxJS
+
+## database
+The database is currently deployed using Amazon Web Services.
+
+## problems
+We still need to figure out a deployment configuration.
