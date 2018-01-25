@@ -54,10 +54,7 @@ class Chat extends React.Component {
           channels={this.props.channels}
           selectChannel={this.props.selectChannel}
         />
-        <ChatBox
-          activeChannel={this.props.activeChannel}
-          username={this.props.username}
-        />
+        {this.isReady()}
       </div>
     )
   }
