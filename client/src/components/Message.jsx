@@ -5,8 +5,9 @@ class Message extends React.Component {
   render(){
     console.log('msg', this.props)
 let date = null;
+let dateNow = Date.now();
 
-if(this.props.date >= this.props.date + (604800*2)){
+if((dateNow - this.props.date) >= (604800000*2)){
   date = (
     <Moment format="MMM Do YYYY" date={this.props.date} />
   )
