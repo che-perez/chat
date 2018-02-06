@@ -20,9 +20,20 @@ function subscribeToMessage(channelId, cb) {
   socket.emit('subscribeToMessage', channelId)
 }
 
+function unsubscribe(){
+  socket.close()
+  socket.open()
+}
+
+function trueUnsubscribe(){
+  socket.close()
+}
+
 export {
   createChannel,
   subscribeToChannels,
   publishMessage,
   subscribeToMessage,
+  unsubscribe,
+  trueUnsubscribe
 }

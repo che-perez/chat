@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { subscribeToMessage } from '../api'
+import { trueUnsubscribe, unsubscribe, subscribeToMessage } from '../api'
 
 import ChatForm from './ChatForm'
 import ChatWindow from './ChatWindow'
@@ -15,15 +15,19 @@ class ChatBox extends React.Component {
     this.fetchMessages = this.fetchMessages.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.fetchMessages()
   }
 
   fetchMessages(){
+    let calls = 0
+    unsubscribe()
     subscribeToMessage(this.props.activeChannel, (message) => {
+      calls++
       this.setState(prevState => ({
         messages: prevState.messages.concat([message])
       }))
+      console.log(calls)
     })
   }
 

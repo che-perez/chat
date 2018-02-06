@@ -57,7 +57,7 @@ function showSubmit(res){
 
 
 r.connect({
-  host: 'localhost',
+  host: '52.91.185.20',
   port: 28015,
   db: 'chat_app'
 }).then((connection) => {

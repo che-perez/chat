@@ -14,7 +14,7 @@ class Chat extends React.Component {
     this.isReady = this.isReady.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.setState({
       chatLoaded: true,
       prevChannel: this.props.activeChannel
