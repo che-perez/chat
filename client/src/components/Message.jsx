@@ -3,7 +3,6 @@ import Moment from 'react-moment'
 
 class Message extends React.Component {
   render(){
-    console.log('msg', this.props)
 let date = null;
 let dateNow = Date.now();
 
