@@ -150,7 +150,10 @@ body{
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  font-family: futura;
+  max-width: 300px;
+  word-wrap: break-word;
+  word-spacing: 3px;
+  font-family: Futura;
   font-size: 15px;
 }
 
