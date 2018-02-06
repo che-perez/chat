@@ -2,13 +2,12 @@ import React from 'react'
 
 import ChannelForm from './ChannelForm'
 import ChannelList from './ChannelList'
-import Logo from './Logo'
 
 class ChannelTray extends React.Component {
   render(){
     return (
       <div className="channel-tray">
-        <p className="logo-chatroom">Chattish</p>
+        <a href="/" className="logo-chatroom">Chattish</a>
         <ChannelForm
           channels={this.props.channels}
         />
